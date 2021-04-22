@@ -231,4 +231,4 @@ $status = $kourses->permissions->delete([
 
 ## Documentation
 
-Check out [examples](#examples) folder for some basic use cases. Full documentation is available on [developer.kourses.com](https://developer.kourses.com).
+Check out [examples](https://github.com/lukapeharda/kourses-php/tree/main/examples) folder for some basic use cases. Full documentation is available on [developer.kourses.com](https://developer.kourses.com).
