@@ -1,6 +1,6 @@
 <?php
 
-namespace Kourses;
+namespace Kourses\Exception;
 
 class InvalidJsonException extends \Exception
 {}
