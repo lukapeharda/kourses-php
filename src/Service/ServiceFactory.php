@@ -14,6 +14,7 @@ class ServiceFactory
         'products' => \Kourses\Service\ProductsService::class,
         'permissions' => \Kourses\Service\PermissionsService::class,
         'memberProducts' => \Kourses\Service\MemberProductsService::class,
+        'memberLoginLink' => \Kourses\Service\MemberLoginLinkService::class,
     ];
 
     /**

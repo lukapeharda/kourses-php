@@ -7,6 +7,7 @@ use GuzzleHttp\Client;
 use Kourses\Exception\ValidationException;
 use Kourses\Exception\InvalidJsonException;
 use Kourses\Exception\UnauthorizedException;
+use Kourses\Exception\EntityNotFoundException;
 use Kourses\Exception\InvalidRequestException;
 use Kourses\Exception\MethodNotSupportedException;
 
@@ -122,6 +123,12 @@ class ApiRequestor
         }
 
         if ($response->getStatusCode() === 404) {
+            $content = $this->decodeResponse($response);
+
+            if (isset($content['message']) && strpos($content['message'], 'No query results for') === 0) {
+                throw new EntityNotFoundException("Entity not found. Are you sure you passed the correct parameter and that the entity exists upstream?");
+            }
+
             throw new InvalidRequestException("API URL invalid. Can you check whether API base URL is correct?");
         }
 
