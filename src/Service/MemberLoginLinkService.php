@@ -3,6 +3,7 @@
 namespace Kourses\Service;
 
 use Kourses\LoginLink;
+use Kourses\Exception\InvalidArgumentException;
 
 class MemberLoginLinkService extends AbstractService
 {
