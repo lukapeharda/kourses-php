@@ -131,7 +131,7 @@ $member = $kourses->members->create([
 
 #### Skipping drip schedule
 
-For each product you disable drip schedule using `products_skip_drip_schedule` param:
+For each product you can disable drip schedule using `products_skip_drip_schedule` param:
 
 ```php
 $member = $kourses->members->create([
@@ -174,6 +174,38 @@ $products = $kourses->memberProducts->all([
     'page' => 2,
 ]);
 ```
+
+### Generate one-click login link for a member
+
+Use `memberLoginLink` resource and its `create` method to generate temporary signed login link.
+
+```php
+$loginLink = $koures->memberLoginLink->create([
+    'member' => 'MEMBER#1',
+]);
+```
+
+Returned `$loginLink` object will have a `login_link` property which you can serve to your user in order for them to log in. `expires_at` property which holds the timestamp (ISO-8601) then the login link will expire.
+
+Signed link will expired in 5 mins (300 seconds).
+
+You can even use member's email address to generate the link:
+
+```php
+$loginLink = $kourses->memberLoginLink->create([
+    'member' => 'john.doe@example.com',
+]);
+```
+
+If you wish to redirect the member after successful login specify a `redirect` param with relative path:
+
+```php
+$loginLink = $kourses->memberLoginLink->create([
+    'member' => 'john.doe@example.com',
+    'redirect' => 'account/profile',
+]);
+```
+
 
 ### Grant a permission
 
