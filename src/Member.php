@@ -8,9 +8,13 @@ namespace Kourses;
  * @property string $firstName
  * @property string $lastName
  * @property \Kourses\Collection $products
+ * @property string $status
  */
 class Member extends DataTransferObject
 {
+    const STATUS_CREATED = 'created';
+    const STATUS_UPDATED = 'updated';
+
     /**
      * Products accessor.
      *
