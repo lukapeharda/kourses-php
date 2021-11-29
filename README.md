@@ -145,6 +145,22 @@ $member = $kourses->members->create([
 ]);
 ```
 
+#### Running product's email integrations
+
+For each product you can enable running of email integrations using `products_run_email_integrations` param:
+
+```php
+$member = $kourses->members->create([
+    'email' => 'john.doe@example.com',
+    'first_name' => 'John',
+    'last_name' => 'Doe',
+    'products' => ['PRODUCT#1', 'PRODUCT#2'],
+    'products_run_email_integrations' => [
+        'PRODUCT#1' => 1,
+    ],
+]);
+```
+
 By default it will honor the set drip schedule.
 
 ### Fetching allowed products for a member
@@ -228,13 +244,23 @@ $status = $kourses->permissions->create([
 ]);
 ```
 
-If you wish to skip drip schedule set for a given products use `skip_drip_schedule` and set it to `0`:
+If you wish to skip drip schedule set for a given product use `skip_drip_schedule` and set it to `0`:
 
 ```php
 $status = $kourses->permissions->create([
     'member' => 'MEMBER#1',
     'product' => 'PRODUCT#1',
     'skip_drip_schedule' => 0,
+]);
+```
+
+If you wish to run email integrations for a given product use `run_email_intgrations` and set it to `1`:
+
+```php
+$status = $kourses->permissions->create([
+    'member' => 'MEMBER#1',
+    'product' => 'PRODUCT#1',
+    'run_email_intgrations' => 0,
 ]);
 ```
 
