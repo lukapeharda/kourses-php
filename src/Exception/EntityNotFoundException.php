@@ -1,6 +1,6 @@
 <?php
 
-namespace Kourses\Exception;
+namespace KoursesPhp\Exception;
 
 class EntityNotFoundException extends \Exception
 {}

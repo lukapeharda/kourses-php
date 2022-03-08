@@ -33,7 +33,7 @@ Authorization: Bearer GENERATED_API_TOKEN
 ### First initialize a client and set the token
 
 ```php
-$kourses = new Kourses\Client();
+$kourses = new KoursesPhp\Client();
 $kourses->setApiKey('GENERATED_API_TOKEN');
 ```
 
@@ -60,7 +60,7 @@ $products = $kourses->products->all([
 ]);
 ```
 
-You can iterate over `$products` to get `Kourses\Product` entities.
+You can iterate over `$products` to get `KoursesPhp\Product` entities.
 
 There are several helpful methods to handle pagination:
 

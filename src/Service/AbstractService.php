@@ -1,20 +1,20 @@
 <?php
 
-namespace Kourses\Service;
+namespace KoursesPhp\Service;
 
-use Kourses\Client;
+use KoursesPhp\Client;
 
 abstract class AbstractService
 {
     /**
-     * @var \Kourses\Client
+     * @var \KoursesPhp\Client
      */
     protected $client;
 
     /**
      * Init client.
      *
-     * @param   \Kourses\Client  $client
+     * @param   \KoursesPhp\Client  $client
      */
     public function __construct(Client $client)
     {
@@ -24,7 +24,7 @@ abstract class AbstractService
     /**
      * Returns client.
      *
-     * @return  \Kourses\Client
+     * @return  \KoursesPhp\Client
      */
     public function getClient()
     {

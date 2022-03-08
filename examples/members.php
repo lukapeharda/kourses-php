@@ -2,7 +2,7 @@
 
 require_once('../vendor/autoload.php');
 
-$kourses = new Kourses\Client();
+$kourses = new KoursesPhp\Client();
 
 $kourses->setApiKey('GENERATED_API_TOKEN');
 $kourses->setApiBaseUrl('http://app.kourses.local/api/');
@@ -17,7 +17,7 @@ try {
 
     var_dump($member);
     var_dump($member->products->first()->title);
-} catch (Kourses\Exception\ValidationException $exception) {
+} catch (KoursesPhp\Exception\ValidationException $exception) {
     $errors = $exception->getErrorBag();
 
     var_dump($errors->first('email'));

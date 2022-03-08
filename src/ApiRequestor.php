@@ -1,15 +1,15 @@
 <?php
 
-namespace Kourses;
+namespace KoursesPhp;
 
 use GuzzleHttp\Client;
 
-use Kourses\Exception\ValidationException;
-use Kourses\Exception\InvalidJsonException;
-use Kourses\Exception\UnauthorizedException;
-use Kourses\Exception\EntityNotFoundException;
-use Kourses\Exception\InvalidRequestException;
-use Kourses\Exception\MethodNotSupportedException;
+use KoursesPhp\Exception\ValidationException;
+use KoursesPhp\Exception\InvalidJsonException;
+use KoursesPhp\Exception\UnauthorizedException;
+use KoursesPhp\Exception\EntityNotFoundException;
+use KoursesPhp\Exception\InvalidRequestException;
+use KoursesPhp\Exception\MethodNotSupportedException;
 
 class ApiRequestor
 {
@@ -93,12 +93,12 @@ class ApiRequestor
      * @param   string  $path
      * @param   array  $params
      *
-     * @throws \Kourses\Exception\MethodNotSupportedException when HTTP method requested is not implemented
-     * @throws \Kourses\Exception\UnauthorizedException when API token is invalid or missing
-     * @throws \Kourses\Exception\InvalidRequestException when API URL is invalid
-     * @throws \Kourses\Exception\ValidationException when param validation errors are thrown by the Kourses platform
-     * @throws \Kourses\Exception\InvalidJsonException when invalid JSON was returned
-     * @throws \Kourses\Exception\InvalidRequestException when any other non successful HTTP response is returned
+     * @throws \KoursesPhp\Exception\MethodNotSupportedException when HTTP method requested is not implemented
+     * @throws \KoursesPhp\Exception\UnauthorizedException when API token is invalid or missing
+     * @throws \KoursesPhp\Exception\InvalidRequestException when API URL is invalid
+     * @throws \KoursesPhp\Exception\ValidationException when param validation errors are thrown by the Kourses platform
+     * @throws \KoursesPhp\Exception\InvalidJsonException when invalid JSON was returned
+     * @throws \KoursesPhp\Exception\InvalidRequestException when any other non successful HTTP response is returned
      *
      * @return  array
      */
@@ -119,7 +119,7 @@ class ApiRequestor
         }
 
         if ($response->getStatusCode() === 401) {
-            throw new UnauthorizedException("Unauthorized. API key either invalid or missing. Did you call 'Kourses\Client::setApiKey' method with an API key obtained in Kourses app?");
+            throw new UnauthorizedException("Unauthorized. API key either invalid or missing. Did you call 'KoursesPhp\Client::setApiKey' method with an API key obtained in Kourses app?");
         }
 
         if ($response->getStatusCode() === 404) {
@@ -159,7 +159,7 @@ class ApiRequestor
      *
      * @param   \Psr\Http\Message\ResponseInterface
      *
-     * @throws  \Kourses\Exception\InvalidJsonException
+     * @throws  \KoursesPhp\Exception\InvalidJsonException
      *
      * @return  array
      */

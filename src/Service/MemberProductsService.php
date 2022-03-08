@@ -1,11 +1,11 @@
 <?php
 
-namespace Kourses\Service;
+namespace KoursesPhp\Service;
 
-use Kourses\Product;
-use Kourses\PaginationMetadata;
-use Kourses\PaginatedCollection;
-use Kourses\Exception\InvalidArgumentException;
+use KoursesPhp\Product;
+use KoursesPhp\PaginationMetadata;
+use KoursesPhp\PaginatedCollection;
+use KoursesPhp\Exception\InvalidArgumentException;
 
 class MemberProductsService extends AbstractService
 {
@@ -14,7 +14,7 @@ class MemberProductsService extends AbstractService
      *
      * @param   array  $params
      *
-     * @return  \Kourses\PaginatedCollection
+     * @return  \KoursesPhp\PaginatedCollection
      */
     public function all($params = null)
     {

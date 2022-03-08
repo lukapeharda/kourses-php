@@ -1,13 +1,13 @@
 <?php
 
-namespace Kourses;
+namespace KoursesPhp;
 
 /**
  * @property string $id
  * @property string $email
  * @property string $firstName
  * @property string $lastName
- * @property \Kourses\Collection $products
+ * @property \KoursesPhp\Collection $products
  * @property string $status
  */
 class Member extends DataTransferObject
@@ -18,7 +18,7 @@ class Member extends DataTransferObject
     /**
      * Products accessor.
      *
-     * @return  \Kourses\Collection
+     * @return  \KoursesPhp\Collection
      */
     public function getProductsAttribute()
     {
@@ -28,7 +28,7 @@ class Member extends DataTransferObject
     /**
      * Convert member's products from array in data to a hydrated collection.
      *
-     * @return  \Kourses\Collection
+     * @return  \KoursesPhp\Collection
      */
     protected function convertProductsArrayToHydratedProductCollection()
     {

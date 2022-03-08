@@ -1,13 +1,13 @@
 <?php
 
-namespace Kourses;
+namespace KoursesPhp;
 
-use Kourses\Service\ServiceFactory;
+use KoursesPhp\Service\ServiceFactory;
 
 class Client
 {
     /**
-     * @var \Kourses\Service\ServiceFactory
+     * @var \KoursesPhp\Service\ServiceFactory
      */
     private $serviceFactory;
 
@@ -26,7 +26,7 @@ class Client
      *
      * @param   string  $name
      *
-     * @return  \Kourses\Service\AbstractService
+     * @return  \KoursesPhp\Service\AbstractService
      */
     public function __get($name)
     {

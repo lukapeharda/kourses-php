@@ -1,11 +1,11 @@
 <?php
 
-namespace Kourses;
+namespace KoursesPhp;
 
 class PaginatedCollection extends Collection
 {
     /**
-     * @var \Kourses\PaginationMetadata
+     * @var \KoursesPhp\PaginationMetadata
      */
     protected $paginationMetadata;
 

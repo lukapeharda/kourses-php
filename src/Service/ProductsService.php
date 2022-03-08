@@ -1,10 +1,10 @@
 <?php
 
-namespace Kourses\Service;
+namespace KoursesPhp\Service;
 
-use Kourses\Product;
-use Kourses\PaginationMetadata;
-use Kourses\PaginatedCollection;
+use KoursesPhp\Product;
+use KoursesPhp\PaginationMetadata;
+use KoursesPhp\PaginatedCollection;
 
 class ProductsService extends AbstractService
 {
@@ -13,7 +13,7 @@ class ProductsService extends AbstractService
      *
      * @param   array  $params
      *
-     * @return  \Kourses\PaginatedCollection
+     * @return  \KoursesPhp\PaginatedCollection
      */
     public function all($params = null)
     {

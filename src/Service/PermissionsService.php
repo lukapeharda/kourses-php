@@ -1,8 +1,8 @@
 <?php
 
-namespace Kourses\Service;
+namespace KoursesPhp\Service;
 
-use Kourses\Exception\InvalidArgumentException;
+use KoursesPhp\Exception\InvalidArgumentException;
 
 class PermissionsService extends AbstractService
 {

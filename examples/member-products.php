@@ -2,7 +2,7 @@
 
 require_once('../vendor/autoload.php');
 
-$kourses = new Kourses\Client();
+$kourses = new KoursesPhp\Client();
 
 $kourses->setApiKey('GENERATED_API_TOKEN');
 $kourses->setApiBaseUrl('http://app.kourses.local/api/');

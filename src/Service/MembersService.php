@@ -1,8 +1,8 @@
 <?php
 
-namespace Kourses\Service;
+namespace KoursesPhp\Service;
 
-use Kourses\Member;
+use KoursesPhp\Member;
 
 class MembersService extends AbstractService
 {
@@ -11,7 +11,7 @@ class MembersService extends AbstractService
      *
      * @param   array  $params
      *
-     * @return  \Kourses\Member
+     * @return  \KoursesPhp\Member
      */
     public function create($params)
     {

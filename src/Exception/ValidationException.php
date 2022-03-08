@@ -1,20 +1,20 @@
 <?php
 
-namespace Kourses\Exception;
+namespace KoursesPhp\Exception;
 
-use Kourses\ErrorBag;
+use KoursesPhp\ErrorBag;
 
 class ValidationException extends \Exception
 {
     /**
-     * @var \Kourses\ErrorBag
+     * @var \KoursesPhp\ErrorBag
      */
     protected $errorBag;
 
     /**
      * Set error bag in order for it to be read later on if needed.
      *
-     * @param   \Kourses\ErrorBag  $errorBag
+     * @param   \KoursesPhp\ErrorBag  $errorBag
      *
      * @return  self
      */
@@ -28,7 +28,7 @@ class ValidationException extends \Exception
     /**
      * Return error bag with validation errors.
      *
-     * @return  \Kourses\ErrorBag
+     * @return  \KoursesPhp\ErrorBag
      */
     public function getErrorBag()
     {

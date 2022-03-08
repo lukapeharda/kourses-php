@@ -1,9 +1,9 @@
 <?php
 
-namespace Kourses\Service;
+namespace KoursesPhp\Service;
 
-use Kourses\LoginLink;
-use Kourses\Exception\InvalidArgumentException;
+use KoursesPhp\LoginLink;
+use KoursesPhp\Exception\InvalidArgumentException;
 
 class MemberLoginLinkService extends AbstractService
 {

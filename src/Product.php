@@ -1,6 +1,6 @@
 <?php
 
-namespace Kourses;
+namespace KoursesPhp;
 
 /**
  * @property string $id

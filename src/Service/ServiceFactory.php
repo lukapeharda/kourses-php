@@ -1,8 +1,8 @@
 <?php
 
-namespace Kourses\Service;
+namespace KoursesPhp\Service;
 
-use Kourses\Client;
+use KoursesPhp\Client;
 
 class ServiceFactory
 {
@@ -10,15 +10,15 @@ class ServiceFactory
      * @var array
      */
     private static $classMap = [
-        'members' => \Kourses\Service\MembersService::class,
-        'products' => \Kourses\Service\ProductsService::class,
-        'permissions' => \Kourses\Service\PermissionsService::class,
-        'memberProducts' => \Kourses\Service\MemberProductsService::class,
-        'memberLoginLink' => \Kourses\Service\MemberLoginLinkService::class,
+        'members' => \KoursesPhp\Service\MembersService::class,
+        'products' => \KoursesPhp\Service\ProductsService::class,
+        'permissions' => \KoursesPhp\Service\PermissionsService::class,
+        'memberProducts' => \KoursesPhp\Service\MemberProductsService::class,
+        'memberLoginLink' => \KoursesPhp\Service\MemberLoginLinkService::class,
     ];
 
     /**
-     * @var \Kourses\Client
+     * @var \KoursesPhp\Client
      */
     private $client;
 
@@ -30,7 +30,7 @@ class ServiceFactory
     /**
      * Init client.
      *
-     * @param   \Kourses\Client  $client
+     * @param   \KoursesPhp\Client  $client
      */
     public function __construct(Client $client)
     {
@@ -46,7 +46,7 @@ class ServiceFactory
      *
      * @param   string  $name
      *
-     * @return  \Kourses\Service\AbstractService
+     * @return  \KoursesPhp\Service\AbstractService
      */
     public function __get($name)
     {
