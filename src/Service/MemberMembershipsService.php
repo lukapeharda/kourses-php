@@ -2,15 +2,15 @@
 
 namespace KoursesPhp\Service;
 
-use KoursesPhp\Product;
+use KoursesPhp\Membership;
 use KoursesPhp\PaginationMetadata;
 use KoursesPhp\PaginatedCollection;
 use KoursesPhp\Exception\InvalidArgumentException;
 
-class MemberProductsService extends AbstractService
+class MemberMembershipsService extends AbstractService
 {
     /**
-     * Fetches all allowed products for a member.
+     * Fetches all allowed memberships for a member.
      *
      * @param   array  $params
      *
@@ -26,17 +26,17 @@ class MemberProductsService extends AbstractService
         // Remove member key from params
         unset($params['member']);
 
-        $response = $this->request('get', 'v1/members/' . $member . '/products', $params);
+        $response = $this->request('get', 'v1/members/' . $member . '/memberships', $params);
 
-        $products = [];
+        $memberships = [];
 
         if (is_array($response['data']) && count($response['data'])) {
-            $products = array_map(function ($item) {
-                return new Product($item);
+            $memberships = array_map(function ($item) {
+                return new Membership($item);
             }, $response['data']);
         }
 
-        $collection = new PaginatedCollection($products);
+        $collection = new PaginatedCollection($memberships);
 
         if (isset($response['meta'])) {
             $collection->setPaginationMetadata(new PaginationMetadata($response['meta']));

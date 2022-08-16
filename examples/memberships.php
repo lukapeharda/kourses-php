@@ -7,10 +7,10 @@ $kourses = new KoursesPhp\Client();
 $kourses->setApiKey('GENERATED_API_TOKEN');
 $kourses->setApiBaseUrl('http://app.kourses.local/api/');
 
-$products = $kourses->products->all(['per_page' => 2]);
+$memberships = $kourses->memberships->all(['per_page' => 2]);
 
-$products->each(function ($product) {
-    var_dump($product->title);
+$memberships->each(function ($membership) {
+    var_dump($membership->name);
 });
 
-var_dump($products->getTotal());
+var_dump($memberships->getTotal());

@@ -11,9 +11,9 @@ class ServiceFactory
      */
     private static $classMap = [
         'members' => \KoursesPhp\Service\MembersService::class,
-        'products' => \KoursesPhp\Service\ProductsService::class,
+        'memberships' => \KoursesPhp\Service\MembershipsService::class,
         'permissions' => \KoursesPhp\Service\PermissionsService::class,
-        'memberProducts' => \KoursesPhp\Service\MemberProductsService::class,
+        'memberMemberships' => \KoursesPhp\Service\MemberProductsService::class,
         'memberLoginLink' => \KoursesPhp\Service\MemberLoginLinkService::class,
     ];
 

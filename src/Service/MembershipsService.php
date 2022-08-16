@@ -2,14 +2,14 @@
 
 namespace KoursesPhp\Service;
 
-use KoursesPhp\Product;
+use KoursesPhp\Membership;
 use KoursesPhp\PaginationMetadata;
 use KoursesPhp\PaginatedCollection;
 
-class ProductsService extends AbstractService
+class MembershipsService extends AbstractService
 {
     /**
-     * Returns a paginated collection list with published products.
+     * Returns a paginated collection list with all memberships.
      *
      * @param   array  $params
      *
@@ -17,17 +17,17 @@ class ProductsService extends AbstractService
      */
     public function all($params = null)
     {
-        $response = $this->request('get', 'v1/products', $params);
+        $response = $this->request('get', 'v1/memberships', $params);
 
-        $products = [];
+        $memberships = [];
 
         if (is_array($response['data']) && count($response['data'])) {
-            $products = array_map(function ($item) {
-                return new Product($item);
+            $memberships = array_map(function ($item) {
+                return new Membership($item);
             }, $response['data']);
         }
 
-        $collection = new PaginatedCollection($products);
+        $collection = new PaginatedCollection($memberships);
 
         if (isset($response['meta'])) {
             $collection->setPaginationMetadata(new PaginationMetadata($response['meta']));

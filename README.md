@@ -1,6 +1,6 @@
 # Kourses PHP bindings
 
-The Kourses PHP library provides access to Kourses API from applications written in PHP. It includes a pre-defined set of classes for API resources such as `members`, `products` and `permissions`.
+The Kourses PHP library provides access to Kourses API from applications written in PHP. It includes a pre-defined set of classes for API resources such as `members`, `memberships` and `permissions`.
 
 ## Requirements
 
@@ -43,34 +43,34 @@ If you want to access beta environment of Kourses app, use `setApiBaseUrl` metho
 $kourses->setApiBaseUrl('https://app.kourses-beta.com/api/');
 ```
 
-### Fetching products
+### Fetching memberships
 
-To fetch all published products use `products` resource and the `all` method:
+To fetch all published memberships use `memberships` resource and the `all` method:
 
 ```php
-$products = $kourses->products->all();
+$memberships = $kourses->memberships->all();
 ```
 
-Returned data will be paginated (default number of products per page is 100). In order to change number of products per page or current page use `page` and `per_page` params (respectively):
+Returned data will be paginated (default number of memberships per page is 100). In order to change number of memberships per page or current page use `page` and `per_page` params (respectively):
 
 ```php
-$products = $kourses->products->all([
+$memberships = $kourses->memberships->all([
     'per_page' => 10,
     'page' => 2,
 ]);
 ```
 
-You can iterate over `$products` to get `KoursesPhp\Product` entities.
+You can iterate over `$memberships` to get `KoursesPhp\Membership` entities.
 
 There are several helpful methods to handle pagination:
 
 ```php
-$products->getCurrentPage(); // returns current page number
-$products->getLastPage(); // returns last page number
-$products->getTotal(); // returns total number of products
-$products->getFrom(); // returns current page items range start
-$products->getTo(); // returns current page items range end
-$products->getPerPage(); // returns number of products per page
+$memberships->getCurrentPage(); // returns current page number
+$memberships->getLastPage(); // returns last page number
+$memberships->getTotal(); // returns total number of memberships
+$memberships->getFrom(); // returns current page items range start
+$memberships->getTo(); // returns current page items range end
+$memberships->getPerPage(); // returns number of memberships per page
 ```
 
 ### Creating members
@@ -87,14 +87,14 @@ $member = $kourses->members->create([
 
 If member was found (based on their email address) they will be updated with the rest of the given data.
 
-You may set a list of `products` for which the member should get access to in the same API call:
+You may set a list of `memberships` for which the member should get access to in the same API call:
 
 ```php
 $member = $kourses->members->create([
     'email' => 'john.doe@example.com',
     'first_name' => 'John',
     'last_name' => 'Doe',
-    'products' => ['PRODUCT#1', 'PRODUCT#2'],
+    'memberships' => ['MEMBERSHIP#1', 'MEMBERSHIP#2'],
 ]);
 ```
 
@@ -115,76 +115,76 @@ $member = $kourses->members->create([
 
 #### Setting permission expiry dates
 
-For each product you can set future expiry date using `products_access_ends_at` param. Date given needs to be in `YYYY-MM-DD` or `YYYY-MM-DD hh:mm:ss` format:
+For each membership you can set future expiry date using `memberships_access_ends_at` param. Date given needs to be in `YYYY-MM-DD` or `YYYY-MM-DD hh:mm:ss` format:
 
 ```php
 $member = $kourses->members->create([
     'email' => 'john.doe@example.com',
     'first_name' => 'John',
     'last_name' => 'Doe',
-    'products' => ['PRODUCT#1', 'PRODUCT#2'],
-    'products_access_ends_at' => [
-        'PRODUCT#1' => '2030-04-05',
+    'memberships' => ['MEMBERSHIP#1', 'MEMBERSHIP#2'],
+    'memberships_access_ends_at' => [
+        'MEMBERSHIP#1' => '2030-04-05',
     ],
 ]);
 ```
 
 #### Skipping drip schedule
 
-For each product you can disable drip schedule using `products_skip_drip_schedule` param:
+For each membership you can disable drip schedule using `memberships_skip_drip_schedule` param:
 
 ```php
 $member = $kourses->members->create([
     'email' => 'john.doe@example.com',
     'first_name' => 'John',
     'last_name' => 'Doe',
-    'products' => ['PRODUCT#1', 'PRODUCT#2'],
-    'products_skip_drip_schedule' => [
-        'PRODUCT#1' => 0,
+    'memberships' => ['MEMBERSHIP#1', 'MEMBERSHIP#2'],
+    'memberships_skip_drip_schedule' => [
+        'MEMBERSHIP#1' => 0,
     ],
 ]);
 ```
 
-#### Running product's email integrations
+#### Running membership's email integrations
 
-For each product you can enable running of email integrations using `products_run_email_integrations` param:
+For each membership you can enable running of email integrations using `memberships_run_email_integrations` param:
 
 ```php
 $member = $kourses->members->create([
     'email' => 'john.doe@example.com',
     'first_name' => 'John',
     'last_name' => 'Doe',
-    'products' => ['PRODUCT#1', 'PRODUCT#2'],
-    'products_run_email_integrations' => [
-        'PRODUCT#1' => 1,
+    'memberships' => ['MEMBERSHIP#1', 'MEMBERSHIP#2'],
+    'memberships_run_email_integrations' => [
+        'MEMBERSHIP#1' => 1,
     ],
 ]);
 ```
 
 By default it will honor the set drip schedule.
 
-### Fetching allowed products for a member
+### Fetching allowed memberships for a member
 
-Use `memberProducts` resource and `all` method to fetch a list of all products that member was granted access to:
+Use `memberMemberships` resource and `all` method to fetch a list of all memberships that member was granted access to:
 
 ```php
-$products = $kourses->memberProducts->all([
+$memberships = $kourses->memberMemberships->all([
     'member' => 'MEMBER#1',
 ]);
 ```
 
-You can even use member's email address to fetch the products:
+You can even use member's email address to fetch the memberships:
 
 ```php
-$products = $kourses->memberProducts->all([
+$memberships = $kourses->memberMemberships->all([
     'member' => 'john.doe@example.com',
 ]);
 ```
 
-Returned data will be paginated (default number of products per page is 100). In order to change number of products per page or current page use `page` and `per_page` params (respectively):
+Returned data will be paginated (default number of memberships per page is 100). In order to change number of memberships per page or current page use `page` and `per_page` params (respectively):
 
 ```php
-$products = $kourses->memberProducts->all([
+$memberships = $kourses->memberMemberships->all([
     'member' => 'MEMBER#1',
     'per_page' => 10,
     'page' => 2,
@@ -225,12 +225,12 @@ $loginLink = $kourses->memberLoginLink->create([
 
 ### Grant a permission
 
-To grant a permission you need to call `create` method on `permissions` resource and provide a member ID (or their email address) and a product ID:
+To grant a permission you need to call `create` method on `permissions` resource and provide a member ID (or their email address) and a membership ID:
 
 ```php
 $status = $kourses->permissions->create([
     'member' => 'MEMBER#1',
-    'product' => 'PRODUCT#1',
+    'membership' => 'MEMBERSHIP#1',
 ]);
 ```
 
@@ -239,27 +239,27 @@ You can add and extra `ends_at` param to specify permission expiry date. Date gi
 ```php
 $status = $kourses->permissions->create([
     'member' => 'MEMBER#1',
-    'product' => 'PRODUCT#1',
+    'membership' => 'MEMBERSHIP#1',
     'ends_at' => '2030-04-05',
 ]);
 ```
 
-If you wish to skip drip schedule set for a given product use `skip_drip_schedule` and set it to `0`:
+If you wish to skip drip schedule set for a given membership use `skip_drip_schedule` and set it to `0`:
 
 ```php
 $status = $kourses->permissions->create([
     'member' => 'MEMBER#1',
-    'product' => 'PRODUCT#1',
+    'membership' => 'MEMBERSHIP#1',
     'skip_drip_schedule' => 0,
 ]);
 ```
 
-If you wish to run email integrations for a given product use `run_email_intgrations` and set it to `1`:
+If you wish to run email integrations for a given membership use `run_email_intgrations` and set it to `1`:
 
 ```php
 $status = $kourses->permissions->create([
     'member' => 'MEMBER#1',
-    'product' => 'PRODUCT#1',
+    'membership' => 'MEMBERSHIP#1',
     'run_email_intgrations' => 0,
 ]);
 ```
@@ -268,12 +268,12 @@ By default the set drip schedule will be honored.
 
 ### Revoke a permission
 
-To revoke a permission you need to call `delete` method on `permissions` resource and provide a member ID (or their email address) and a product ID:
+To revoke a permission you need to call `delete` method on `permissions` resource and provide a member ID (or their email address) and a membership ID:
 
 ```php
 $status = $kourses->permissions->delete([
     'member' => 'MEMBER#1',
-    'product' => 'PRODUCT#1',
+    'membership' => 'MEMBERSHIP#1',
 ]);
 ```
 
@@ -282,7 +282,7 @@ You can add and extra `ends_at` param to specify permission expiry date. Date gi
 ```php
 $status = $kourses->permissions->delete([
     'member' => 'MEMBER#1',
-    'product' => 'PRODUCT#1',
+    'membership' => 'MEMBERSHIP#1',
     'ends_at' => '2030-04-05',
 ]);
 ```
