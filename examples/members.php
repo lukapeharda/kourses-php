@@ -10,13 +10,13 @@ $kourses->setApiBaseUrl('http://app.kourses.local/api/');
 try {
     $member = $kourses->members->create([
         'email' => 'api.dummy@example.com',
-        // 'products' => [
+        // 'memberships' => [
         //     '8b6a9ba4'
         // ],
     ]);
 
     var_dump($member);
-    var_dump($member->products->first()->title);
+    var_dump($member->memberships->first()->title);
 } catch (KoursesPhp\Exception\ValidationException $exception) {
     $errors = $exception->getErrorBag();
 

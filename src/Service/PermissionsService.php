@@ -7,7 +7,7 @@ use KoursesPhp\Exception\InvalidArgumentException;
 class PermissionsService extends AbstractService
 {
     /**
-     * Create permission for a member and a product.
+     * Create permission for a member and a membership.
      *
      * @param   array  $params
      *
@@ -19,19 +19,19 @@ class PermissionsService extends AbstractService
 
         // Get required params
         $member = $params['member'];
-        $product = $params['product'];
+        $membership = $params['membership'];
 
         // Remove required params
         unset($params['member']);
-        unset($params['product']);
+        unset($params['membership']);
 
-        $response = $this->request('post', 'v1/members/' . $member . '/products/' . $product . '/permissions', $params);
+        $response = $this->request('post', 'v1/members/' . $member . '/memberships/' . $membership . '/permissions', $params);
 
         return $response['status'];
     }
 
     /**
-     * Delete a permission for a member and a product.
+     * Delete a permission for a member and a membership.
      *
      * @param   array  $params
      *
@@ -43,13 +43,13 @@ class PermissionsService extends AbstractService
 
         // Get required params
         $member = $params['member'];
-        $product = $params['product'];
+        $membership = $params['membership'];
 
         // Remove required params
         unset($params['member']);
-        unset($params['product']);
+        unset($params['membership']);
 
-        $response = $this->request('delete', 'v1/members/' . $member . '/products/' . $product . '/permissions', $params);
+        $response = $this->request('delete', 'v1/members/' . $member . '/memberships/' . $membership . '/permissions', $params);
 
         return $response['status'];
     }
@@ -69,8 +69,8 @@ class PermissionsService extends AbstractService
             throw new InvalidArgumentException('"member" param is required.');
         }
 
-        if ( ! isset($params['product']) || empty($params['product'])) {
-            throw new InvalidArgumentException('"product" param is required.');
+        if ( ! isset($params['membership']) || empty($params['membership'])) {
+            throw new InvalidArgumentException('"membership" param is required.');
         }
 
         return true;

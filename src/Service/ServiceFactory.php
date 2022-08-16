@@ -13,7 +13,7 @@ class ServiceFactory
         'members' => \KoursesPhp\Service\MembersService::class,
         'memberships' => \KoursesPhp\Service\MembershipsService::class,
         'permissions' => \KoursesPhp\Service\PermissionsService::class,
-        'memberMemberships' => \KoursesPhp\Service\MemberProductsService::class,
+        'memberMemberships' => \KoursesPhp\Service\MemberMembershipsService::class,
         'memberLoginLink' => \KoursesPhp\Service\MemberLoginLinkService::class,
     ];
 
