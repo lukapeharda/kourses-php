@@ -96,6 +96,21 @@ $member = $kourses->members->create([
     'last_name' => 'Doe',
     'memberships' => ['MEMBERSHIP#1', 'MEMBERSHIP#2'],
 ]);
+
+// or
+
+$member = $kourses->members->create([
+    'email' => 'john.doe@example.com',
+    'first_name' => 'John',
+    'last_name' => 'Doe',
+    'memberships' => [
+        [
+            'id' => 'MEMBERSHIP#1'
+        ], [
+            'id' => 'MEMBERSHIP#2'
+        ]
+    ],
+]);
 ```
 
 #### Sending activation email
@@ -115,7 +130,7 @@ $member = $kourses->members->create([
 
 #### Setting permission expiry dates
 
-For each membership you can set future expiry date using `memberships_access_ends_at` param. Date given needs to be in `YYYY-MM-DD` or `YYYY-MM-DD hh:mm:ss` format:
+For each membership you can set future expiry date using `memberships_ends_at` param or nested `memberships[0][ends_at]`. Date given needs to be in `YYYY-MM-DD` or `YYYY-MM-DD hh:mm:ss` format:
 
 ```php
 $member = $kourses->members->create([
@@ -123,15 +138,32 @@ $member = $kourses->members->create([
     'first_name' => 'John',
     'last_name' => 'Doe',
     'memberships' => ['MEMBERSHIP#1', 'MEMBERSHIP#2'],
-    'memberships_access_ends_at' => [
+    'memberships_ends_at' => [
         'MEMBERSHIP#1' => '2030-04-05',
     ],
 ]);
+
+// or
+
+$member = $kourses->members->create([
+    'email' => 'john.doe@example.com',
+    'first_name' => 'John',
+    'last_name' => 'Doe',
+    'memberships' => [
+        [
+            'id' => 'MEMBERSHIP#1',
+            'ends_at' => '2030-04-05'
+        ], [
+            'id' => 'MEMBERSHIP#2'
+        ]
+    ],
+]);
+
 ```
 
 #### Skipping drip schedule
 
-For each membership you can disable drip schedule using `memberships_skip_drip_schedule` param:
+For each membership you can disable drip schedule using `memberships_skip_drip_schedule` param or nested `memberships[0][skip_drip_schedule]`:
 
 ```php
 $member = $kourses->members->create([
@@ -143,11 +175,29 @@ $member = $kourses->members->create([
         'MEMBERSHIP#1' => 0,
     ],
 ]);
+
+// or
+
+$member = $kourses->members->create([
+    'email' => 'john.doe@example.com',
+    'first_name' => 'John',
+    'last_name' => 'Doe',
+    'memberships' => [
+        [
+            'id' => 'MEMBERSHIP#1',
+            'skip_drip_schedule' => 0
+        ], [
+            'id' => 'MEMBERSHIP#2'
+        ]
+    ],
+]);
 ```
+
+By default it will honor the set drip schedule.
 
 #### Running membership's email integrations
 
-For each membership you can enable running of email integrations using `memberships_run_email_integrations` param:
+For each membership you can enable running of email integrations using `memberships_run_email_integrations` param (or nested `memberships[0][run_email_integrations]`):
 
 ```php
 $member = $kourses->members->create([
@@ -159,9 +209,23 @@ $member = $kourses->members->create([
         'MEMBERSHIP#1' => 1,
     ],
 ]);
-```
 
-By default it will honor the set drip schedule.
+// or
+
+$member = $kourses->members->create([
+    'email' => 'john.doe@example.com',
+    'first_name' => 'John',
+    'last_name' => 'Doe',
+    'memberships' => [
+        [
+            'id' => 'MEMBERSHIP#1',
+            'run_email_integrations' => 1
+        ], [
+            'id' => 'MEMBERSHIP#2'
+        ]
+    ],
+]);
+```
 
 ### Fetching allowed memberships for a member
 
